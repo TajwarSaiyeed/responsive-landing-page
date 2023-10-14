@@ -15,8 +15,6 @@ const Slider = ({ name }) => {
       spaceBetween={20} // Adjust the space between slides as needed
       slidesPerView={1}
       pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
       style={{
         width: "100%",
         maxWidth: "600px",

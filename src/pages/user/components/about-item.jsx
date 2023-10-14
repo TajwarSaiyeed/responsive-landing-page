@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
+
 export const AboutItem = ({ title, value }) => {
   return (
     <div>
       <h1 className="text-[16px] font-bold text-slate-400 uppercase">
         {title}
       </h1>
-      {(typeof value === "string" || typeof value === "number") && (
+      {typeof value === "string" && (
         <p className="text-sm md:text-[16px] my-2">{value}</p>
       )}
       {typeof value === "object" && (
@@ -23,5 +24,5 @@ export const AboutItem = ({ title, value }) => {
 
 AboutItem.propTypes = {
   title: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired || PropTypes.object.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
 };

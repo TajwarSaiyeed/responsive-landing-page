@@ -5,8 +5,9 @@ import { RightSide } from "./components/right-side";
 import { useEffect, useState } from "react";
 
 const UserPage = () => {
-  const [cards, setCards] = useState([]);
   const user = useLoaderData();
+  const [loading, setLoading] = useState(true);
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -16,6 +17,7 @@ const UserPage = () => {
       const data = await res.json();
 
       setCards(data);
+      setLoading(false);
     };
 
     return () => {
@@ -40,23 +42,26 @@ const UserPage = () => {
       <div className="mb-10 px-10">
         <h1 className="text-[40px] font-bold mb-5">Recommended for you</h1>
         <div className="flex flex-wrap gap-5 justify-center">
-          {cards
-            .filter(
-              (card) =>
-                (card.name !== user[0].name && card.rating >= user[0].rating) ||
-                card.reviewCount >= user[0].reviewCount
-            )
-            .map((card) => (
-              <RecommendedCard
-                key={card.id}
-                image={card.image}
-                name={card.name}
-                intro={card.intro}
-                rating={card.rating}
-                price={card.price}
-                reviewCount={card.reviewCount}
-              />
-            ))}
+          {cards.length > 0
+            ? cards
+                .filter(
+                  (card) =>
+                    (card.name !== user[0].name &&
+                      card.rating <= user[0].rating) ||
+                    card.reviewCount <= user[0].reviewCount
+                )
+                .map((card) => (
+                  <RecommendedCard
+                    key={card.id}
+                    image={card.image}
+                    name={card.name}
+                    intro={card.intro}
+                    rating={card.rating}
+                    price={card.price}
+                    reviewCount={card.reviewCount}
+                  />
+                ))
+            : loading && <h1>Loading...</h1>}
         </div>
       </div>
     </>

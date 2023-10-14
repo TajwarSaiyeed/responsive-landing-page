@@ -36,7 +36,10 @@ export const RightSide = ({
       </div>
       <div className="flex flex-wrap justify-between my-5">
         <AboutItem title="From" value={about?.from} />
-        <AboutItem title="Partner Since" value={about?.partnerSince} />
+        <AboutItem
+          title="Partner Since"
+          value={about?.partnerSince.toString()}
+        />
         <AboutItem
           title="Average Response Time"
           value={about?.averageResponseTime}
@@ -51,7 +54,7 @@ export const RightSide = ({
       <div className="md:hidden">
         <CallUserCard price={price} taskComplexity={taskComplexity} />
       </div>
-      <div className="bg-white w-full h-[300px] md:h-[400px] flex flex-col justify-center rounded-md shadow-md items-start p-5 my-2 md:hidden">
+      <div className="bg-white w-full max-w-[600px] h-[300px] md:h-[400px] flex flex-col justify-center rounded-md shadow-md items-start p-5 my-2 md:hidden">
         <h2 className="text-2xl font-bold ">What people say?</h2>
         <Slider name={name} />
       </div>
