@@ -54,7 +54,7 @@ export const RightSide = ({
       <div className="md:hidden">
         <CallUserCard price={price} taskComplexity={taskComplexity} />
       </div>
-      <div className="bg-white w-full max-w-[600px] h-[300px] md:h-[400px] flex flex-col justify-center rounded-md shadow-md items-start p-5 my-2 md:hidden">
+      <div className="bg-white w-full max-w-[400px] sm:max-w-[600px] h-[300px] md:h-[400px] flex flex-col justify-center rounded-md shadow-md items-start p-5 my-2 md:hidden">
         <h2 className="text-2xl font-bold ">What people say?</h2>
         <Slider name={name} />
       </div>
