@@ -11,7 +11,7 @@ const UserPage = () => {
   useEffect(() => {
     const fetchCards = async () => {
       const res = await fetch(
-        `${import.meta.env.VITE_SEVER_ADDRESS}/api/users/${name}`
+        `${import.meta.env.VITE_SEVER_ADDRESS}/api/users`
       );
       const data = await res.json();
 
@@ -22,8 +22,6 @@ const UserPage = () => {
       fetchCards();
     };
   }, []);
-
-  console.log(cards);
 
   return (
     <>
