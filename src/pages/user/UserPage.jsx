@@ -19,10 +19,7 @@ const UserPage = () => {
       setCards(data);
       setLoading(false);
     };
-
-    return () => {
-      fetchCards();
-    };
+    fetchCards();
   }, []);
 
   return (
